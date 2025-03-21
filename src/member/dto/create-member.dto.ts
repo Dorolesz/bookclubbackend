@@ -1,13 +1,22 @@
-import { IsDate, IsInt } from "class-validator";
+import { IsBoolean, IsDate, IsString } from "class-validator";
 
 export class CreateMemberDto {
 
-  @IsInt()
-  member_id: number
+  @IsString()
+  name: string
 
-  @IsInt()
-  amount: number
+  @IsString()
+  gender: string;
 
   @IsDate()
-  paid_at: Date
+  birth_date: Date
+
+  @IsBoolean()
+  banned: boolean
+
+  @IsDate()
+  created_at: Date
+
+  @IsDate()
+  update_at: Date
 }

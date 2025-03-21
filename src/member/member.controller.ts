@@ -9,26 +9,26 @@ export class MemberController {
 
   @Post()
   create(@Body() createMemberDto: CreateMemberDto) {
-    return this.memberService.create(createMemberDto);
+    return this.memberService.createMember(createMemberDto);
   }
 
   @Get()
   findAll() {
-    return this.memberService.findAll();
+    return this.memberService.getAllMember();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.memberService.findOne(+id);
+    return this.memberService.getMemberById(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateMemberDto: UpdateMemberDto) {
-    return this.memberService.update(+id, updateMemberDto);
+    return this.memberService.updateMember(+id, updateMemberDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.memberService.remove(+id);
+    return this.memberService.removeMember(+id);
   }
 }

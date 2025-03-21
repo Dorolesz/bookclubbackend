@@ -8,22 +8,27 @@ export class MemberService {
   constructor(private prisma: PrismaService) {}
 
   async createMember(createMemberDto: CreateMemberDto) {
-    return await this.prisma.members.createMember();
+    return this.prisma.members.create({ data: createMemberDto });
   }
 
   async getAllMember() {
-    return await this.prisma.members.getAllMember();
+    return await this.prisma.members.findMany();
   }
 
   async getMemberById(id: number) {
-    return this.prisma.members.getMemberById;
+    return this.prisma.members.findUnique({
+      where: {id}
+    });
   }
 
   async updateMember(id: number, updateMemberDto: UpdateMemberDto) {
-    return `This action updates a #${id} member`;
+    return this.prisma.members.update({
+      data: updateMemberDto,
+      where: {id}
+    });
   }
 
   async removeMember(id: number) {
-    return `This action removes a #${id} member`;
+    return this.prisma.members.delete({ where: { id } });
   }
 }

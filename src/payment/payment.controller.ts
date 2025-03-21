@@ -9,26 +9,26 @@ export class PaymentController {
 
   @Post()
   create(@Body() createPaymentDto: CreatePaymentDto) {
-    return this.paymentService.create(createPaymentDto);
+    return this.paymentService.createPayment(createPaymentDto);
   }
 
   @Get()
   findAll() {
-    return this.paymentService.findAll();
+    return this.paymentService.getAllPayment();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.paymentService.findOne(+id);
+    return this.paymentService.getPaymentById(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePaymentDto: UpdatePaymentDto) {
-    return this.paymentService.update(+id, updatePaymentDto);
+    return this.paymentService.updatePayment(+id, updatePaymentDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.paymentService.remove(+id);
+    return this.paymentService.removePayment(+id);
   }
 }
